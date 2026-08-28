@@ -1,9 +1,10 @@
 title: Iris
-description: Engineering Research Blog
-
-url: "https://username.github.io"
+description: Engineering Notes and Research
+url: "https://lavania7.github.io"
 baseurl: ""
 
-theme: minima
-
 markdown: kramdown
+
+collections:
+  projects:
+    output: true
