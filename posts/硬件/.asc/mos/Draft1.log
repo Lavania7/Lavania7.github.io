@@ -1,0 +1,23 @@
+LTspice 26.0.2 for Windows
+Circuit: D:\Users\Documents\Iris Unified\基于AO3400 AO3401 MOSFET的低压开关应用设计分析\.asc\Draft1.net
+Start Time: Sun Aug 16 15:40:56 2026
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+D:\Users\Documents\Iris Unified\基于AO3400 AO3401 MOSFET的低压开关应用设计分析\.asc\Draft1.net(4): Limiting rise time to 0.01.
+
+V2 Vctrl 0 PULSE(0 1 0 0 0 0.1 0.2)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\Users\Documents\Iris Unified\基于AO3400 AO3401 MOSFET的低压开关应用设计分析\.asc\Draft1.net(4): Limiting fall time to 0.01.
+
+V2 Vctrl 0 PULSE(0 1 0 0 0 0.1 0.2)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.086 seconds.
+
+Files loaded:
+D:\Users\Documents\Iris Unified\基于AO3400 AO3401 MOSFET的低压开关应用设计分析\.asc\Draft1.net
+C:\Users\18003\AppData\Local\LTspice\lib\cmp\standard.mos
+
