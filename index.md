@@ -11,10 +11,6 @@ Engineering, robotics, embedded systems and research.
 
 {% for post in site.posts limit:5 %}
 
-### [{{ post.title }}]({{ post.url | relative_url }})
-
-{{ post.date | date: "%Y-%m-%d" }}
-
-{{ post.excerpt }}
+### [{{ post.title }}]({{ post.url | relative_url }})1
 
 {% endfor %}

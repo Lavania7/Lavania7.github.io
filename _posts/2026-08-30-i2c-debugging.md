@@ -6,4 +6,10 @@ categories: [embedded, hardware]
 tags: [I2C, MCU, debugging]
 ---
 
-my first
+# this is the first title 
+
+content1
+
+## this is the first subtitle
+
+content2
