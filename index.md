@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# Iris
+# Home
 
 Engineering, robotics, embedded systems and research.
 

@@ -1,8 +1,8 @@
-body { margin: 0; font-family: system-ui, sans-serif; background: #ddd; color: #222; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #e5e8f0; color: #4d6b8e; }
 
 .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
-.site-header { border-bottom: 1px solid #ddd; background: white; }
+.site-header { border-bottom: 1px solid #ddd; background: #a3b1c6; }
 
 .header-inner { max-width: 900px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
 
