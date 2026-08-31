@@ -1,4 +1,4 @@
-body { margin: 0; font-family: system-ui, sans-serif; background: #1a1a1a; color: #222; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #ddd; color: #222; }
 
 .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
@@ -11,3 +11,17 @@ body { margin: 0; font-family: system-ui, sans-serif; background: #1a1a1a; color
 nav a { margin-left: 20px; text-decoration: none; color: #555; }
 
 .site-footer { margin-top: 80px; padding: 30px 20px; border-top: 1px solid #ddd; color: #777; }
+
+.site-container { display: flex; max-width: 1200px; margin: 0 auto; }
+
+.sidebar { width: 220px; flex-shrink: 0; padding: 2rem 1.5rem; }
+
+.main-content { flex: 1; min-width: 0; padding: 2rem; }
+
+.sidebar ul { list-style: none; padding: 0; }
+
+.sidebar li { margin: 0.5rem 0; }
+
+.sidebar ul ul { padding-left: 1rem; }
+
+.sidebar a { text-decoration: none; }
