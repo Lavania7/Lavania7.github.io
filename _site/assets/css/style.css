@@ -1,27 +1,83 @@
-body { margin: 0; font-family: system-ui, sans-serif; background: #e5e8f0; color: #4d6b8e; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #e5e8f0;
+  color: #4d6b8e;
+}
 
-.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
-.site-header { border-bottom: 1px solid #ddd; background: #a3b1c6; }
+.site-header {
+  border-bottom: 1px solid #ddd;
+  background: #a3b1c6;
+}
 
-.header-inner { max-width: 900px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.site-title { font-size: 22px; font-weight: 700; text-decoration: none; color: inherit; }
+.site-title {
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
 
-nav a { margin-left: 20px; text-decoration: none; color: #555; }
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+}
 
-.site-footer { margin-top: 80px; padding: 30px 20px; border-top: 1px solid #ddd; color: #777; }
+.site-footer {
+  margin-top: 80px;
+  padding: 30px 20px;
+  border-top: 1px solid #ddd;
+  color: #777;
+}
 
-.site-container { display: flex; max-width: 1200px; margin: 0 auto; }
+.site-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.sidebar { width: 220px; flex-shrink: 0; padding: 2rem 1.5rem; }
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 2rem 1.5rem;
+}
 
-.main-content { flex: 1; min-width: 0; padding: 2rem; }
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem;
+}
 
-.sidebar ul { list-style: none; padding: 0; }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
 
-.sidebar li { margin: 0.5rem 0; }
+.sidebar li {
+  margin: 0.5rem 0;
+}
 
-.sidebar ul ul { padding-left: 1rem; }
+.sidebar ul ul {
+  padding-left: 1rem;
+}
 
-.sidebar a { text-decoration: none; }
+.sidebar a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
