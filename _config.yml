@@ -8,3 +8,8 @@ markdown: kramdown
 collections:
   projects:
     output: true
+
+exclude:
+  - preview.sh
+  - help.md
+  - .preview/

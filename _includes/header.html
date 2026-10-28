@@ -1,16 +1,43 @@
-<header class="site-header">
-
+<div class="site-masthead">
+  <header class="site-header">
     <div class="header-inner">
-
-        <a class="site-title" href="{{ '/' | relative_url }}">
-            {{ site.title }}
-        </a>
-
-        <nav>
-            <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/about/' | relative_url }}">About</a>
-        </nav>
-
+      <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Iris 首页">
+        <img class="avatar brand-avatar" src="{{ '/assets/picture/head1.jpg' | relative_url }}" alt="Iris 的头像" width="36" height="36">
+        <span class="site-title">{{ site.title | escape }}</span>
+      </a>
+      <span class="brand-note">Engineering, learning & life.</span>
+      <nav class="header-actions" aria-label="主导航">
+        <a class="about-link{% if page.url == '/about/' %} is-current{% endif %}" href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About {% include icon.html name='arrow-up-right' %}</a>
+        <span class="action-divider" aria-hidden="true"></span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="当前主题：跟随系统。点击切换为纯白" title="跟随系统 · 点击切换为纯白">
+          <span class="theme-icon" data-theme-icon="light">{% include icon.html name='sun' %}</span>
+          <span class="theme-icon" data-theme-icon="dark">{% include icon.html name='moon' %}</span>
+          <span class="theme-icon" data-theme-icon="system">{% include icon.html name='monitor' %}</span>
+        </button>
+        <span class="sr-only" id="theme-status" role="status"></span>
+      </nav>
     </div>
-
-</header>
+  </header>
+  <div class="topics-bar">
+    <nav class="topics-inner" aria-label="文章主题">
+      <a class="topics-home{% if page.url == '/' %} is-current{% endif %}" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{% include icon.html name='book' %}<span>全部文章</span></a>
+      <span class="topic-divider" aria-hidden="true"></span>
+      {% assign topics = site.categories | sort %}
+      {% for topic in topics %}
+      <details class="topic-menu{% if page.categories contains topic[0] %} is-current{% endif %}">
+        <summary>{{ topic[0] | escape }} {% include icon.html name='chevron-down' %}</summary>
+        <div class="topic-dropdown">
+          <div class="dropdown-heading"><span>{{ topic[0] | escape }}</span><span>{{ topic[1].size }} 篇</span></div>
+          {% for post in topic[1] %}
+          <a href="{{ post.url | relative_url }}"{% if page.url == post.url %} aria-current="page"{% endif %}>
+            {% include icon.html name='file' %}
+            <span><strong>{{ post.title | escape }}</strong><small>{{ post.date | date: '%Y-%m-%d' }}</small></span>
+            {% include icon.html name='arrow-right' %}
+          </a>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </nav>
+  </div>
+</div>

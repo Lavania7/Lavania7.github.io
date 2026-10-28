@@ -1,21 +1,31 @@
 ---
 layout: default
 ---
-
 <article class="post">
-
-    <header class="post-header">
-
-        <h1>{{ page.title }}</h1>
-
-        <p class="post-meta">
-            {{ page.date | date: "%Y-%m-%d" }}
-        </p>
-
-    </header>
-
-    <div class="post-content">
-        {{ content }}
+  <nav class="breadcrumbs" aria-label="当前位置">
+    <a href="{{ '/' | relative_url }}">文章</a><span aria-hidden="true">/</span>
+    <span>{{ page.categories | first | default: '笔记' | escape }}</span>
+  </nav>
+  <header class="post-header">
+    <div class="eyebrow">NOTES & IDEAS</div>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p class="post-description">{{ page.description | escape }}</p>{% endif %}
+    <div class="post-byline">
+      <img src="{{ '/assets/picture/head1.jpg' | relative_url }}" width="28" height="28" alt="" class="avatar">
+      <a href="{{ '/about/' | relative_url }}">{{ site.title | escape }}</a>
+      <span class="byline-dot" aria-hidden="true">·</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%m月%d日' }}</time>
     </div>
-
+  </header>
+  <div class="post-content prose" data-toc-source>{{ content }}</div>
+  <footer class="post-footer">
+    <div class="tag-list">{% for tag in page.tags %}<span class="tag"># {{ tag | escape }}</span>{% endfor %}</div>
+    <a class="back-link" href="{{ '/' | relative_url }}">{% include icon.html name='arrow-left' %} 全部文章</a>
+  </footer>
+  {% if page.previous or page.next %}
+  <nav class="post-pagination" aria-label="相邻文章">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><span>上一篇</span><strong>{{ page.previous.title | escape }}</strong></a>{% endif %}
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}"><span>下一篇</span><strong>{{ page.next.title | escape }}</strong></a>{% endif %}
+  </nav>
+  {% endif %}
 </article>
