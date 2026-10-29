@@ -1,0 +1,27 @@
+- key: engineering
+  label: Engineering
+  activities:
+    - key: architecture
+      label: Architecture
+    - key: optimization
+      label: Optimization
+    - key: restrictions
+      label: Restrictions
+    - key: debug-spot
+      label: Debug Spot
+- key: research
+  label: Research
+  activities:
+    - key: derivation
+      label: Derivation
+    - key: modeling
+      label: Modeling
+    - key: experiment
+      label: Experiment
+    - key: review
+      label: Review
+    - key: exploration
+      label: Exploration
+- key: life
+  label: Life
+  activities: []

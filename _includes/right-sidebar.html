@@ -4,7 +4,7 @@
     <div class="right-sidebar-content">
       <section class="right-sidebar-section">
         <h2>{% include icon.html name='list' %} 本页目录</h2>
-        <nav class="post-toc" id="post-toc" aria-label="本页目录"><p class="toc-placeholder">目录根据正文标题自动生成。</p></nav>
+        <nav class="post-toc" id="post-toc" aria-label="本页目录"><p class="toc-placeholder">当前页面暂无目录。</p></nav>
         <noscript><p class="empty-state">启用 JavaScript 后可使用自动目录。</p></noscript>
       </section>
       <section class="right-sidebar-section">
@@ -19,7 +19,6 @@
         </dl>
         {% if page.tags.size > 0 %}<div class="tag-list info-tags">{% for tag in page.tags %}<span class="tag">{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
       </section>
-      <a class="back-to-top" href="#top">{% include icon.html name='arrow-up' %} 回到顶部</a>
     </div>
   </details>
 </aside>

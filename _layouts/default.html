@@ -15,7 +15,7 @@
   {% include header.html %}
   <div class="site-container">
     {% include sidebar.html %}
-    <main id="main-content" class="main-content" tabindex="-1">{{ content }}</main>
+    <main id="main-content" class="main-content{% if page.url == '/' %} home-main{% endif %}" tabindex="-1">{{ content }}<a class="back-to-top" href="#top" aria-label="回到顶部" title="回到顶部" hidden>{% include icon.html name='arrow-up' %}</a></main>
     {% include right-sidebar.html %}
   </div>
   {% include footer.html %}

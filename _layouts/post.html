@@ -7,7 +7,6 @@ layout: default
     <span>{{ page.categories | first | default: '笔记' | escape }}</span>
   </nav>
   <header class="post-header">
-    <div class="eyebrow">NOTES & IDEAS</div>
     <h1>{{ page.title | escape }}</h1>
     {% if page.description %}<p class="post-description">{{ page.description | escape }}</p>{% endif %}
     <div class="post-byline">

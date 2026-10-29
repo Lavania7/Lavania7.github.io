@@ -2,18 +2,13 @@
   <details class="panel-disclosure" data-responsive-panel open>
     <summary class="mobile-panel-toggle">{% include icon.html name='book' %}<span>文章列表</span><span class="count">{{ site.posts.size }}</span>{% include icon.html name='chevron-down' %}</summary>
     <div class="sidebar-content">
-      <div class="section-heading"><h2>文章列表</h2><span class="count">{{ site.posts.size }}</span></div>
-      <a class="sidebar-overview{% if page.url == '/' %} is-current{% endif %}" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{% include icon.html name='layers' %} 文章概览</a>
-      <div class="sidebar-label">所有笔记 <span>按时间排序</span></div>
       <nav class="post-list" aria-label="可阅读的文章">
         {% for post in site.posts %}
         <a class="post-list-item{% if page.url == post.url %} is-current{% endif %}" href="{{ post.url | relative_url }}"{% if page.url == post.url %} aria-current="page"{% endif %}>
-          {% include icon.html name='file' %}
-          <span><strong>{{ post.title | escape }}</strong><small>{{ post.date | date: '%Y-%m-%d' }}</small></span>
+          <span><strong>{{ post.title | escape }}</strong></span>
         </a>
         {% else %}<p class="empty-state">第一篇笔记正在路上。</p>{% endfor %}
       </nav>
-      <div class="sidebar-note"><span class="status-dot" aria-hidden="true"></span>持续记录，慢慢积累。</div>
     </div>
   </details>
 </aside>

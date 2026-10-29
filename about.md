@@ -2,13 +2,13 @@
 layout: default
 title: About
 permalink: /about/
-description: 关于 Iris 和这个记录工程实践、学习与思考的个人博客。
+description: 关于 Iris Howard 和这个记录工程实践、学习与思考的个人博客。
 ---
 <article class="about-content" data-toc-source>
   <header class="about-header">
-    <img class="avatar about-avatar" src="{{ '/assets/picture/head1.jpg' | relative_url }}" width="80" height="80" alt="Iris 的头像">
+    <img class="avatar about-avatar" src="{{ '/assets/picture/head1.jpg' | relative_url }}" width="80" height="80" alt="Iris Howard 的头像">
     <div class="eyebrow">BEHIND THE NOTES</div>
-    <h1>你好，我是 Iris。</h1>
+    <h1>你好，我是 Iris Howard。</h1>
     <p class="post-description">记录工程、学习与生活中的思考。</p>
   </header>
   <div class="prose">
