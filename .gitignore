@@ -1,7 +1,33 @@
-.bundle/
-.jekyll-cache/
-.jekyll-metadata
-.sass-cache/
-_site/
-vendor/
-.preview/
+# Jekyll build output and caches
+/_site/
+/.jekyll-cache/
+/.jekyll-metadata
+/.sass-cache/
+
+# Bundler configuration and installed dependencies (keep Gemfile.lock)
+/.bundle/
+/vendor/
+
+# Local preview tools and artifacts
+/.preview/
+/preview.sh
+/help.md
+
+# Local agent and editor state
+/.agents/
+/.codex/
+/.idea/
+
+# Local environment files (keep shareable examples)
+.env
+.env.*
+!.env.example
+
+# OS files, logs, and temporary editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.swp
+*.swo
+*~

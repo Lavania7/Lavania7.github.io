@@ -28,7 +28,7 @@
       <a class="topics-home{% if page.url == '/' %} is-current{% endif %}" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{% include icon.html name='book' %}<span>All</span></a>
       <span class="topic-divider" aria-hidden="true"></span>
       {% for domain in site.data.navigation %}
-      <details class="topic-menu{% if page.domain == domain.key %} is-current{% endif %}">
+      <details class="topic-menu{% if page.domain == domain.key %} is-current{% endif %}" data-domain="{{ domain.key | escape }}">
         <summary>{{ domain.label | escape }} {% include icon.html name='chevron-down' %}</summary>
         <div class="topic-dropdown">
           <a href="{{ '/' | relative_url }}?domain={{ domain.key }}">All</a>

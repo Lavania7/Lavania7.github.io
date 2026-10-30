@@ -10,7 +10,9 @@ collections:
     output: true
 
 exclude:
+  - Gemfile
+  - Gemfile.lock
   - preview.sh
   - help.md
-  - temp.md
   - .preview/
+  - vendor/

@@ -114,11 +114,15 @@
     var searchInput = searchForm.querySelector('input');
     var searchResults = document.getElementById('search-results');
     var searchPosts;
+    var searchRequest = 0;
     function closeSearch() {
+      searchRequest++;
+      searchPosts = null;
       searchResults.hidden = true;
       searchInput.setAttribute('aria-expanded', 'false');
     }
     function showSearch() {
+      var request = ++searchRequest;
       var query = searchInput.value.trim().toLocaleLowerCase();
       searchPosts = null;
       searchResults.replaceChildren();
@@ -127,7 +131,7 @@
         if (!response.ok) throw new Error('Search index unavailable');
         return response.json();
       }).then(function (posts) {
-        if (query !== searchInput.value.trim().toLocaleLowerCase()) return;
+        if (request !== searchRequest) return;
         searchPosts = posts.filter(function (post) {
           return [post.title, post.description, post.domain, post.activity].join(' ').toLocaleLowerCase().includes(query);
         }).slice(0, 8);
@@ -147,11 +151,13 @@
         searchResults.hidden = false;
         searchInput.setAttribute('aria-expanded', 'true');
       }).catch(function () {
+        if (request !== searchRequest) return;
         searchResults.replaceChildren();
         var error = document.createElement('p');
         error.textContent = '搜索暂时不可用。';
         searchResults.appendChild(error);
         searchResults.hidden = false;
+        searchInput.setAttribute('aria-expanded', 'true');
       });
     }
     searchInput.addEventListener('input', showSearch);
@@ -166,10 +172,12 @@
   }
 
   var cards = Array.from(document.querySelectorAll('.article-card[data-domain]'));
-  if (cards.length) {
+  var sectionTitle = document.getElementById('recent-posts');
+  var pagination = document.getElementById('posts-pagination');
+  if (sectionTitle && pagination) {
     var filterEmpty = document.querySelector('.filter-empty');
-    var sectionTitle = document.getElementById('recent-posts');
-    var pagination = document.getElementById('posts-pagination');
+    var postsEmpty = document.querySelector('.posts-empty');
+    var topicsHome = document.querySelector('.topics-home');
     var pageSize = 3;
 
     function changePage(page) {
@@ -194,9 +202,25 @@
       var currentPage = Number.isInteger(requestedPage) && requestedPage > 0 ? Math.min(requestedPage, totalPages || 1) : 1;
       cards.forEach(function (card) { card.hidden = true; });
       matching.slice((currentPage - 1) * pageSize, currentPage * pageSize).forEach(function (card) { card.hidden = false; });
-      if (filterEmpty) filterEmpty.hidden = matching.length !== 0;
-      if (sectionTitle) sectionTitle.textContent = domain ?
-        domain.charAt(0).toUpperCase() + domain.slice(1) + (activity ? ' · ' + activity.replace(/(^|-)(\w)/g, function (_, separator, char) { return separator === '-' ? ' ' + char.toUpperCase() : char.toUpperCase(); }) : '') : 'Latest';
+      var filtered = Boolean(domain || activity);
+      if (postsEmpty) postsEmpty.hidden = filtered;
+      if (filterEmpty) filterEmpty.hidden = matching.length !== 0 || (!cards.length && !filtered);
+      sectionTitle.textContent = (domain ? domain.charAt(0).toUpperCase() + domain.slice(1) : 'Latest') +
+        (activity ? ' · ' + activity.replace(/(^|-)(\w)/g, function (_, separator, char) { return separator === '-' ? ' ' + char.toUpperCase() : char.toUpperCase(); }) : '');
+      if (topicsHome) {
+        topicsHome.classList.toggle('is-current', !filtered);
+        if (filtered) topicsHome.removeAttribute('aria-current');
+        else topicsHome.setAttribute('aria-current', 'page');
+      }
+      menus.forEach(function (menu) {
+        var current = menu.dataset.domain === domain;
+        menu.classList.toggle('is-current', current);
+        menu.querySelectorAll('.topic-dropdown a').forEach(function (link) {
+          var linkActivity = new URL(link.href, window.location.href).searchParams.get('activity');
+          if (current && linkActivity === activity) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+      });
 
       pagination.replaceChildren();
       pagination.hidden = totalPages <= 1;
