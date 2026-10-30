@@ -1,6 +1,21 @@
 (function () {
   'use strict';
   var root = document.documentElement;
+  // Reserve the actual header/footer sizes, including wrapped text and mobile safe areas.
+  var masthead = document.querySelector('.site-masthead');
+  var footer = document.querySelector('.site-footer');
+  function updateChromeHeights() {
+    if (masthead) root.style.setProperty('--masthead-height', masthead.getBoundingClientRect().height + 'px');
+    if (footer) root.style.setProperty('--footer-height', footer.getBoundingClientRect().height + 'px');
+  }
+  updateChromeHeights();
+  if (typeof ResizeObserver !== 'undefined') {
+    var chromeObserver = new ResizeObserver(updateChromeHeights);
+    if (masthead) chromeObserver.observe(masthead);
+    if (footer) chromeObserver.observe(footer);
+  } else {
+    window.addEventListener('resize', updateChromeHeights);
+  }
   var themeButton = document.getElementById('theme-toggle');
   var themes = ['system', 'light', 'dark'];
   var themeNames = { system: '跟随系统', light: '纯白', dark: '纯黑' };
@@ -85,7 +100,8 @@
     var mainContent = document.getElementById('main-content');
     function updateBackToTop() {
       backToTop.hidden = window.scrollY < 160;
-      var bottomInset = Math.max(24, window.innerHeight - mainContent.getBoundingClientRect().bottom + 24);
+      var footerInset = footer ? footer.getBoundingClientRect().height : 0;
+      var bottomInset = Math.max(footerInset + 16, window.innerHeight - mainContent.getBoundingClientRect().bottom + 16);
       backToTop.style.bottom = bottomInset + 'px';
     }
     window.addEventListener('scroll', updateBackToTop, { passive: true });
